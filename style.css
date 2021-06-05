@@ -76,13 +76,26 @@ p {
 }
 
 .btn {
+  --transition: 150ms ease-in-out;
   font-size: inherit;
   font-family: inherit;
+  cursor: pointer;
   border: 0;
   background-color: var(--clr-light-gray);
   border-radius: 100vh;
   padding: 15px 30px;
   line-height: 1;
+  -webkit-transition: background-color var(--transition), color var(--transition), -webkit-box-shadow var(--transition);
+  transition: background-color var(--transition), color var(--transition), -webkit-box-shadow var(--transition);
+  transition: box-shadow var(--transition), background-color var(--transition), color var(--transition);
+  transition: box-shadow var(--transition), background-color var(--transition), color var(--transition), -webkit-box-shadow var(--transition);
+}
+
+.btn:hover, .btn:focus {
+  -webkit-box-shadow: inset 0 0 0 2px var(--clr-light-gray);
+          box-shadow: inset 0 0 0 2px var(--clr-light-gray);
+  color: var(--clr-light-gray);
+  background-color: var(--clr-bg);
 }
 
 .attribution {
