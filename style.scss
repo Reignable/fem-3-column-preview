@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Lexend+Deca&display=swap");
 
+$breakpoint-md: 800px;
+
 :root {
   --clr-orange: hsl(31, 77%, 52%);
   --clr-cyan: hsl(184, 100%, 22%);
@@ -22,7 +24,7 @@ body {
   background-color: var(--clr-light-gray);
   display: grid;
   place-items: center;
-  padding: 2rem;
+  padding: 2rem 0;
 }
 
 h2 {
@@ -35,10 +37,24 @@ p {
   margin: 0;
 }
 
+.cards {
+  margin: 0 24px;
+
+  @media screen and (min-width: calc(920px + 48px)) {
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: $breakpoint-md) {
+    display: flex;
+    max-width: 920px;
+  }
+}
+
 .card {
   --clr-bg: var(--clr-cyan);
+  --border-radius: 8px;
+  width: 100%;
   padding: 48px;
-  max-width: 327px;
   color: var(--clr-light-gray);
   background-color: var(--clr-bg);
 
@@ -63,14 +79,26 @@ p {
 
   &:first-of-type {
     --clr-bg: var(--clr-orange);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
   }
 
   &:last-of-type {
     --clr-bg: var(--clr-dark-cyan);
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+  }
+
+  @media screen and (min-width: $breakpoint-md) {
+    &:first-of-type {
+      border-top-right-radius: 0;
+      border-bottom-left-radius: var(--border-radius);
+    }
+
+    &:last-of-type {
+      border-bottom-left-radius: 0;
+      border-top-right-radius: var(--border-radius);
+    }
   }
 }
 
@@ -91,7 +119,7 @@ p {
   &:focus {
     box-shadow: inset 0 0 0 2px var(--clr-light-gray);
     color: var(--clr-light-gray);
-    background-color: var(--clr-bg);
+    background-color: transparent;
   }
 }
 
